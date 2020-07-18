@@ -40,6 +40,19 @@ app.post('/estudiantes', async (req, res) => {
     res.render('estudiantes', { estudiantes });
 });
 
+app.put('/estudiantes', async (req, res) => {
+    const { nombre, edad } = req.body;
+    await Estudiantes.update({ nombre, edad });
+    const estudiante = await Estudiantes.findById(req.params.id).select('nombre edad');
+    res.render('estudiantes', { estudiantes });
+});
+
+app.delete('/estudiantes', async (req, res) => {
+    const { nombre, edad } = req.body;
+    await Estudiantes.remove({ nombre, edad });
+    const estudiante = await Estudiantes.findById(req.params.id).select('nombre edad');
+    res.render('estudiantes', { estudiantes });
+});
 
 // Controladores - API
 app.get('/api/estudiantes/', async (req, res) => {

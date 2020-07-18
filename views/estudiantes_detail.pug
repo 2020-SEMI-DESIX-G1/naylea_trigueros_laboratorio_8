@@ -3,8 +3,18 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
+        title Doc
     body
         a(href='/estudiantes') Ir atrás
-        h1 #{estudiante.nombre}
-        h2 Con la edad #{estudiante.edad}
+         
+
+            form(method="post" action="/estudiantes/update/" + estudiante._id)
+                label(for="nombre") Nombre:
+                input(type="text" name="nombre" value=estudiante.nombre)
+                label(for="edad") Edad:
+                input(type="number" name="edad" value=estudiante.edad)
+                br
+                button(type="submit" name="Modificar") Modificar
+                br
+            form(method="post" action="/estudiantes/delete/" + estudiante._id)
+                button(type="submit" name="editar") Eliminar

@@ -40,17 +40,16 @@ app.post('/estudiantes', async (req, res) => {
     res.render('estudiantes', { estudiantes });
 });
 
-app.put('/estudiantes', async (req, res) => {
+app.post('/estudiantes/update/:id', async (req, res) => {
     const { nombre, edad } = req.body;
-    await Estudiantes.update({ nombre, edad });
-    const estudiante = await Estudiantes.findById(req.params.id).select('nombre edad');
+    await Estudiantes.findById(req.params.id).update({ nombre, edad });
+    const estudiantes = await Estudiantes.find().select('nombre edad');
     res.render('estudiantes', { estudiantes });
 });
 
-app.delete('/estudiantes', async (req, res) => {
-    const { nombre, edad } = req.body;
-    await Estudiantes.remove({ nombre, edad });
-    const estudiante = await Estudiantes.findById(req.params.id).select('nombre edad');
+app.post('/estudiantes/delete/:id' ,async (req ,res) => {
+    await Estudiantes.findByIdAndDelete(req.params.id);
+    const estudiantes = await Estudiantes.find().select('nombre edad');
     res.render('estudiantes', { estudiantes });
 });
 

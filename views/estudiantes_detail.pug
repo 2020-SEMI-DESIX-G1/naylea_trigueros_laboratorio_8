@@ -8,13 +8,13 @@ html(lang="en")
         a(href='/estudiantes') Ir atrás
          
 
-            form(method="post" action="/estudiantes/update/" + estudiante._id)
-                label(for="nombre") Nombre:
-                input(type="text" name="nombre" value=estudiante.nombre)
-                label(for="edad") Edad:
-                input(type="number" name="edad" value=estudiante.edad)
-                br
-                button(type="submit" name="Modificar") Modificar
-                br
-            form(method="post" action="/estudiantes/delete/" + estudiante._id)
-                button(type="submit" name="eliminar") Eliminar
+        form(method="post" action="/estudiantes/update/" + estudiante._id)
+            label(for="nombre") Nombre:
+            input(type="text" name="nombre" value=estudiante.nombre)
+            label(for="edad") Edad:
+            input(type="number" name="edad" value=estudiante.edad)
+            br
+            button(type="submit" name="Modificar") Modificar
+            br
+        form(method="post" action="/estudiantes/delete/" + estudiante._id)
+            button(type="submit" name="eliminar") Eliminar

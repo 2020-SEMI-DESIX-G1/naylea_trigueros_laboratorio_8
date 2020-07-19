@@ -44,7 +44,7 @@ app.post('/estudiantes/update/:id', async (req, res) => {
     const { nombre, edad } = req.body;
     await Estudiantes.findById(req.params.id).update({ nombre, edad });
     const estudiantes = await Estudiantes.find().select('nombre edad');
-    res.render('estudiantes', { estudiantes });
+    res.redirect('/estudiantes');
 });
 
 app.post('/estudiantes/delete/:id' ,async (req ,res) => {
